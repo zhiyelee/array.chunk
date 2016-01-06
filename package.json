@@ -1,6 +1,6 @@
 {
   "name": "array.chunk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Split array to chunks",
   "main": "index.js",
   "scripts": {
