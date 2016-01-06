@@ -1,4 +1,5 @@
 # array.chunks
+[![Build Status](https://travis-ci.org/zhiyelee/array.chunk.svg)](https://travis-ci.org/zhiyelee/array.chunk)
 
 Split array to chunks of given size
 
