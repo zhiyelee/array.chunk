@@ -14,3 +14,7 @@ console.log(chunks([1, 2, 3, 4, 5], 2));
 
 ## LICENSE
 ISC
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zhiyelee/array.chunk/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
