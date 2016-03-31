@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/zhiyelee/array.chunk#readme",
   "devDependencies": {
-    "ava": "^0.9.1"
+    "ava": "^0.13.0"
   }
 }
