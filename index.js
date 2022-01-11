@@ -1,53 +1,34 @@
 /**
- * get type string
- * @param val
- * @returns {string}
- */
-function getType(val) {
-  // `[object Array]`.slice(8, -1) ==> Array
-  return Object.prototype.toString.call(val).slice(8, -1);
-}
+  * Array Chunk: Split array/TypedArray to chunks of given size.
+  **/
 
-/**
- * check whether arr is an Array of TypedArray
- * @param arr
- * @return bool
- */
-function isArray(arr) {
-  var type = getType(arr);
-  var arrTypes = [
-    'Array',
-    'Int8Array',
-    'Uint8Array',
-    'Uint8ClampedArray',
-    'Int16Array',
-    'Uint16Array',
-    'Int32Array',
-    'Uint32Array',
-    'Float32Array',
-    'Float64Array'
-  ];
-
-  return arrTypes.indexOf(type) !== -1;
-
-}
-module.exports = function chunks(arr, size) {
-  if (!isArray(arr)) {
-    throw new TypeError('Input should be Array or TypedArray');
+module.exports = (array = [], chunk = 1) => {
+  /* must be an array */
+  if (!Array.isArray(array)) {
+    throw new Error("Array Chunk: requires 'array' argument to be of an array type");
   }
-
-  if (typeof size !== 'number') {
-    throw new TypeError('Size should be a Number');
+  /* should not be NaN and must be an integer only */
+  else if (Number.isNaN(chunk) || !Number.isInteger(chunk)) {
+    throw new Error("Array Chunk: requires 'chunk' argument to be of an integer type");
   }
+  /* should be greater than zero */
+  else if (chunk <= 0) {
+    throw new Error("Array Chunk: requires 'chunk' value to be greater than zero");
+  }
+  else {
+    let resultArray = [];
+    let startIndex = 0;
+    let endIndex = chunk;
 
-  var result = [];
-  for (var i = 0; i < arr.length; i += size) {
-    if (typeof arr.slice === 'function') {
-      result.push(arr.slice(i, size + i));
-    } else {
-      result.push(arr.subarray(i, size + i));
+    /* iteration */
+    while (startIndex < array.length) {
+      const arrayChunk = array.slice(startIndex, endIndex);
+      resultArray.push(arrayChunk);
+
+      startIndex += chunk;
+      endIndex += chunk;
     }
-  }
 
-  return result;
+    return resultArray;
+  }
 };
